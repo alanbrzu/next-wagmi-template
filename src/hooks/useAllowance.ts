@@ -12,6 +12,9 @@ export const useAllowance = (tokenAddress: Address | string, contractAddress: Ad
 		abi: erc20Abi,
 		functionName: 'allowance',
 		args: [address ?? zeroAddress, contractAddress as Address],
+		query: {
+			enabled: address !== zeroAddress,
+		},
 	})
 	useWatch(refetch)
 
