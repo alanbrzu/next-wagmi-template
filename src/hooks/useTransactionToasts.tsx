@@ -15,7 +15,6 @@ export const TransactionLink = ({ hash }: TransactionLinkProps) => {
 		<a href={`${EXPLORER[ENV_CHAIN.id]}/tx/${hash}`} target="_blank" rel="noreferrer">
 			<div className="items-center gap-2">
 				<p className="font-medium">View Transaction</p>
-				<p>Go</p>
 			</div>
 		</a>
 	)
@@ -26,29 +25,28 @@ export const useTransactionToasts = ({ text, hash, confirming, loading, success,
 		console.log({ loading })
 
 		if (loading) {
-			/** @todo make this `${text} Pending` */
-			toast('Transaction Pending', {
+			toast(`${text} Pending`, {
 				description: <TransactionLink hash={hash} />,
 				duration: 5000,
 			})
 		}
-	}, [hash, loading])
+	}, [hash, loading, text])
 
 	useEffect(() => {
 		if (hash && success) {
-			toast.success('Transaction Successful', {
+			toast.success(`${text} Successful`, {
 				description: <TransactionLink hash={hash} />,
 				duration: 5000,
 			})
 		}
-	}, [hash, success])
+	}, [hash, success, text])
 
 	useEffect(() => {
 		if (hash && error) {
-			toast.error('Transaction Error', {
+			toast.error(`${text} Error`, {
 				description: <TransactionLink hash={hash} />,
 				duration: 5000,
 			})
 		}
-	}, [error, hash])
+	}, [error, hash, text])
 }

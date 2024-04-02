@@ -1,1 +1,1 @@
-const APP_NAME = 'Web3 Template'
+const APP_NAME = 'NextJS Wagmi Template'

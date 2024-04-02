@@ -24,7 +24,7 @@ export default function TransactionButton({
 				onClick={handleExecution}
 				/** @todo make this button be disabled and have a spinner while loading */
 				// isLoading={transaction.confirming || transaction.loading}
-				disabled={disabled || insufficientBalance}
+				disabled={disabled || insufficientBalance || transaction.confirming || transaction.loading}
 				// loadingText={transaction.loadingText}
 				// colorScheme="gray"
 				// flex={1}

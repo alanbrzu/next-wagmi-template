@@ -11,6 +11,9 @@ export const useBalance = (tokenAddress: Address) => {
 	const { data, isLoading, refetch } = useBalanceWagmi({
 		address,
 		token: tokenAddress,
+		query: {
+			enabled: !!address,
+		},
 	})
 	useWatch(refetch)
 
